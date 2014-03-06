@@ -6,7 +6,6 @@ use Symfony\Component\Yaml\Yaml;
 
 $config = Yaml::parse(dirname(__FILE__) . "/config.yaml");
 
-
 $client = S3Client::factory(
     [
         "key" => $config["aws"]["key"],
@@ -26,16 +25,17 @@ $databasePassword = $config["database"]["pass"];
 $databaseName = $config["database"]["name"];
 $databaseHost = $config["database"]["host"];
 
-shell_exec("mysqldump -h $databaseHost -u $databaseUser -p$databasePassword $databaseName > $path$name.sql");
-shell_exec("tar -czf $path$name.tar.gz " . dirname(__FILE__) . "/test $path$name.sql");
+$assetsPath = $config["assets"];
 
-/*
+shell_exec("mysqldump -h $databaseHost -u $databaseUser -p$databasePassword $databaseName > $path$name.sql");
+shell_exec("tar -czf $path$name.tar.gz $assetsPath $path$name.sql");
+
 $result = $client->putObject(
     [
         'Bucket'     => $bucket,
-        'Key'        => $name,
+        'Key'        => $name . ".tar.gz",
         'SourceFile' => $path . $name . ".tar.gz"
     ]
 );
- */
-//shell_exec("rm $path$name.tar.gz $path$name.sql");
+
+shell_exec("rm $path$name.tar.gz $path$name.sql");
