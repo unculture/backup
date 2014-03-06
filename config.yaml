@@ -1,0 +1,9 @@
+aws:
+    key: 
+    secret: 
+database:
+    user: 
+    pass: 
+    host: localhost
+    name: 
+assets: 
