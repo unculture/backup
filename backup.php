@@ -15,7 +15,7 @@ $client = S3Client::factory(
 );
 
 
-$bucket = "crownmultiservices-backup";
+$bucket = $config["aws"]["bucket"];
 $path = dirname(__FILE__) . "/";
 
 date_default_timezone_set("Europe/London");

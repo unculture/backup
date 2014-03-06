@@ -1,6 +1,7 @@
 aws:
     key: 
     secret: 
+    bucket:
 database:
     user: 
     pass: 
