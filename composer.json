@@ -1,0 +1,14 @@
+{
+    "name": "creativecherry/backup",
+    "description": "Backup database and assets to S3",
+    "require": {
+        "aws/aws-sdk-php": "~2",
+        "symfony/yaml": "~2"
+    },
+    "authors": [
+        {
+            "name": "James Browne",
+            "email": "jb@jamesbrowne.me"
+        }
+    ]
+}
