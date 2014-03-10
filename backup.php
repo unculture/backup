@@ -28,7 +28,7 @@ $databaseHost = $config["database"]["host"];
 $assetsPath = $config["assets"];
 
 shell_exec("mysqldump -h $databaseHost -u $databaseUser -p$databasePassword $databaseName > $path$name.sql");
-shell_exec("tar -czf $path$name.tar.gz $assetsPath $path$name.sql");
+shell_exec("tar -czf $path$name.tar.gz $assetsPath $path$name.sql >/dev/null 2>&1");
 
 $result = $client->putObject(
     [
